@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-text-center">Pokédex</ion-title>
+    <ion-searchbar></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+    <ion-item *ngFor="let pokemon of pokemons">
+      <ion-grid>
+        <ion-row>
+          <ion-button (click)=getPokemon(pokemon.id)>{{ pokemon.id }} : {{ pokemon.name }}</ion-button>
+        </ion-row>
+        <div *ngIf="selectedPokemon && selectedPokemon.name===pokemon.name">
+          <h2 class="ion-text-center ion-text-capitalize">{{ selectedPokemon.name }} / {{selectedPokemon.french_name}}
+          </h2>
+          <ion-row>
+            <ion-col size="8">
+              <ion-img src="{{ selectedPokemon.img }}" alt="{{ selectedPokemon.name }}">
+              </ion-img>
+            </ion-col>
+            <ion-col size="4">
+              <ion-img *ngFor="let type of selectedPokemon.types" src="../../assets/img/{{ type }}.png"
+                alt="{{ type }}"></ion-img>
+              <ion-img src="{{ selectedPokemon.shinyimg }}" alt="{{ selectedPokemon.name }} shiny"></ion-img>
+              <p class="ion-text-center">Shiny</p>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="6"><strong>Hauteur :</strong> {{ selectedPokemon.height }} m</ion-col>
+            <ion-col size="6"><strong>Poids :</strong> {{ selectedPokemon.weight }} kg</ion-col>
+            <ion-col size="6"><strong>PV :</strong> {{ selectedPokemon.hp }}</ion-col>
+            <ion-col size="6"><strong>Vitesse :</strong> {{ selectedPokemon.speed }} </ion-col>
+            <ion-col size="6"><strong>Attaque :</strong> {{ selectedPokemon.attack }} </ion-col>
+            <ion-col size="6"><strong>Défense :</strong> {{ selectedPokemon.defense }} </ion-col>
+            <ion-col size="6"><strong>Attaque Spé :</strong> {{ selectedPokemon.special_attack }} </ion-col>
+            <ion-col size="6"><strong>Défense Spé :</strong> {{ selectedPokemon.special_defense }} </ion-col>
+          </ion-row>
+        </div>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
