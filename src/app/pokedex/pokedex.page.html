@@ -1,7 +1,8 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title class="ion-text-center">Pokédex</ion-title>
-    <ion-searchbar></ion-searchbar>
+  <ion-toolbar color="primary">
+    <ion-title class="ion-text-center ion-margin">Pokédex</ion-title>
+    <!-- <ion-searchbar class="ion-margin-bottom" placeholder="Nom en anglais ou numéro du pokémon" showClearButton="true"></ion-searchbar> -->
+    <p class="ion-text-center">Consultez les Pokémons et ajouter les à votre équipe !</p>
   </ion-toolbar>
 </ion-header>
 
@@ -10,10 +11,26 @@
   <ion-list>
     <ion-item *ngFor="let pokemon of pokemons">
       <ion-grid>
+
         <ion-row>
-          <ion-button (click)=getPokemon(pokemon.id)>{{ pokemon.id }} : {{ pokemon.name }}</ion-button>
+          <ion-col size='6'>
+            <p class="ion-text-capitalize"><strong>{{ pokemon.id }} : {{ pokemon.name }}</strong></p>
+          </ion-col>
+          <ion-col size='3'>
+            <ion-button block (click)=getPokemon(pokemon.id)>
+              <img src="../../assets/img/pokedex-open.png">
+            </ion-button>
+            <!-- <ion-button (click)=getPokemon(pokemon.id)>Afficher</ion-button> -->
+          </ion-col>
+          <ion-col size='3'>
+            <ion-button color="success" (click)=addToTeam(pokemon.id)>
+              <img height="40" src="../../assets/img/pokeball.png">
+            </ion-button>
+            <!-- <ion-button color="success" (click)=addToTeam(pokemon.id)>Ajouter</ion-button> -->
+          </ion-col>
         </ion-row>
-        <div *ngIf="selectedPokemon && selectedPokemon.name===pokemon.name">
+
+        <div class="lightgray" *ngIf="selectedPokemon && selectedPokemon.name===pokemon.name">
           <h2 class="ion-text-center ion-text-capitalize">{{ selectedPokemon.name }} / {{selectedPokemon.french_name}}
           </h2>
           <ion-row>
