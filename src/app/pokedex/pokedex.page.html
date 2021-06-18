@@ -3,6 +3,13 @@
     <ion-title class="ion-text-center ion-margin">Pokédex</ion-title>
     <!-- <ion-searchbar class="ion-margin-bottom" placeholder="Nom en anglais ou numéro du pokémon" showClearButton="true"></ion-searchbar> -->
     <p class="ion-text-center">Consultez les Pokémons et ajouter les à votre équipe !</p>
+    <ion-grid>
+      <ion-row class="ion-justify-content-between">
+        <ion-button color="light" [routerLink]="'/home'">Accueil</ion-button>
+        <ion-button color="light" [routerLink]="'/team'">Mon équipe</ion-button>
+        <ion-button color="light" [routerLink]="''">Combat</ion-button>
+      </ion-row>
+    </ion-grid>
   </ion-toolbar>
 </ion-header>
 
@@ -17,16 +24,14 @@
             <p class="ion-text-capitalize"><strong>{{ pokemon.id }} : {{ pokemon.name }}</strong></p>
           </ion-col>
           <ion-col size='3'>
-            <ion-button block (click)=getPokemon(pokemon.id)>
+            <ion-button color="transparent" (click)=getPokemon(pokemon.id)>
               <img src="../../assets/img/pokedex-open.png">
             </ion-button>
-            <!-- <ion-button (click)=getPokemon(pokemon.id)>Afficher</ion-button> -->
           </ion-col>
           <ion-col size='3'>
-            <ion-button color="success" (click)=addToTeam(pokemon.id)>
-              <img height="40" src="../../assets/img/pokeball.png">
+            <ion-button color="transparent" (click)=addPokemon(pokemon.id)>
+              <img src="../../assets/img/pokeball.png">
             </ion-button>
-            <!-- <ion-button color="success" (click)=addToTeam(pokemon.id)>Ajouter</ion-button> -->
           </ion-col>
         </ion-row>
 
@@ -35,12 +40,12 @@
           </h2>
           <ion-row>
             <ion-col size="8">
-              <ion-img src="{{ selectedPokemon.img }}" alt="{{ selectedPokemon.name }}">
+              <ion-img src="{{ selectedPokemon.img }}" alt="{{ selectedPokemon.name }}" style="width:75%">
               </ion-img>
             </ion-col>
             <ion-col size="4">
               <ion-img *ngFor="let type of selectedPokemon.types" src="../../assets/img/{{ type }}.png"
-                alt="{{ type }}"></ion-img>
+                style="width:75%" alt="{{ type }}"></ion-img>
               <ion-img src="{{ selectedPokemon.shinyimg }}" alt="{{ selectedPokemon.name }} shiny"></ion-img>
               <p class="ion-text-center">Shiny</p>
             </ion-col>

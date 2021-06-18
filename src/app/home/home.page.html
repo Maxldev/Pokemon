@@ -1,16 +1,40 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Pokémon
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content [fullscreen]="true">
-  <div class="ion-padding">
-    <ion-button expand="full" [routerLink]="['/profil']">Mon Profil</ion-button>
-    <ion-button expand="full" [routerLink]="['/team']">Mon équipe</ion-button>
-    <ion-button expand="full" [routerLink]="['/pokedex']">Pokédex</ion-button>
-    <ion-button expand="full" [routerLink]="['/fight']">Combattre</ion-button>
-  </div>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+    <ion-grid>
+      <ion-row>
+        <img src="../../assets/img/pokemon.png" alt="Pokémon">
+      </ion-row>
+      <ion-row class="ion-align-items-center">
+        <ion-col size="3">
+          <img src="../../assets/img/pokedex-open.png">
+        </ion-col>
+        <ion-col size="9">
+          <ion-button expand="full" [routerLink]="['/pokedex']">Pokédex</ion-button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="ion-align-items-center">
+        <ion-col size="3">
+          <img src="../../assets/img/pokeballs.png">
+        </ion-col>
+        <ion-col size="9">
+          <ion-button expand="full" [routerLink]="['/team']">Mon équipe</ion-button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="ion-align-items-center">
+        <ion-col size="3">
+          <img src="../../assets/img/combat.png">
+        </ion-col>
+        <ion-col size="9">
+          <ion-button expand="full" [routerLink]="['/']">Combat</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-row>
+      <img src="../../assets/img/background.png" alt="background">
+    </ion-row>
+    
 </ion-content>
